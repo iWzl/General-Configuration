@@ -1,0 +1,42 @@
+```xml
+
+<plugin>
+<groupId>org.codehaus.mojo</groupId>
+<artifactId>appassembler-maven-plugin</artifactId>
+<version>2.1.0</version>
+<configuration>
+    <repositoryLayout>flat</repositoryLayout>
+    <includeConfigurationDirectoryInClasspath>false</includeConfigurationDirectoryInClasspath>
+    <daemons>
+        <daemon>
+            <id>apisvr</id>
+            <mainClass>com.XXX.XXX.ApiApplication</mainClass>
+            <!--<commandLineArguments>-->
+            <!--<commandLineArgument>start</commandLineArgument>-->
+            <!--</commandLineArguments>-->
+            <generatorConfigurations>
+                <generatorConfiguration>
+                    <generator>jsw</generator>
+                    <includes>
+                        <include>linux-x86-64</include>
+                    </includes>
+                </generatorConfiguration>
+            </generatorConfigurations>
+            <platforms>
+                <platform>jsw</platform>
+            </platforms>
+        </daemon>
+    </daemons>
+</configuration>
+<executions>
+    <execution>
+        <id>generate-jsw-scripts</id>
+        <phase>package</phase>
+        <goals>
+            <goal>generate-daemons</goal>
+        </goals>
+    </execution>
+</executions>
+</plugin>
+```
+
